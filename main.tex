@@ -1,0 +1,339 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{titling}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue!50!black,
+    urlcolor=blue!50!black,
+    citecolor=blue!50!black
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Temperature Sensors: Calibration of Pt-100, Diode and Thermocouple}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\title{\textbf{Temperature Sensors} \\[4pt] \large Calibration of a Pt-100 Resistance Thermometer, a Semiconductor Diode, and a Thermocouple}
+\author{Parth Soni}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+{\Huge \textbf{Temperature Sensors}}\\[0.5cm]
+{\Large Calibration of Pt-100, Semiconductor Diode, and Thermocouple\\ as Temperature Sensors}\\[2cm]
+
+{\large \textbf{Submitted by}}\\[0.3cm]
+{\large Parth Soni}\\[2cm]
+
+{\large \textbf{Experiment:} Temperature Sensors}\\[0.3cm]
+{\large \textbf{Date of experiment:} 24 August 2026}\\[0.3cm]
+
+\vfill
+{\large \today}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Aim of the Experiment}
+\begin{enumerate}[label=(\roman*)]
+    \item To calibrate a Pt-100 platinum resistance thermometer using the boiling point of liquid nitrogen, the melting point of ice, room temperature, and the boiling point of water as fixed/standard temperature references, and to obtain the relation between resistance and temperature for Pt-100.
+    \item To use the calibrated Pt-100 as a reference thermometer and calibrate a semiconductor p--n junction diode (1N4148) as a temperature sensor by measuring its forward voltage as a function of temperature, and to estimate the band gap energy of the semiconductor.
+    \item To calibrate a Chromel--Alumel thermocouple as a temperature sensor by measuring the thermo-emf developed as a function of temperature.
+\end{enumerate}
+
+\section{Theory}
+
+\subsection{General idea of temperature measurement}
+Temperature cannot be measured directly like length or mass; it is inferred from some other physical property of a system that changes monotonically and reproducibly with temperature, and which can be measured directly (length of a mercury column, electrical resistance, voltage across a junction, etc.). In this experiment three different physical effects are used as the basis of three different classes of temperature sensors: (i) the temperature dependence of the electrical resistance of a metal (Pt-100), (ii) the temperature dependence of the forward voltage of a semiconductor p--n junction (diode), and (iii) the Seebeck effect in a junction of two dissimilar metals (thermocouple). Since the Pt-100 sensor can be calibrated against well-defined fixed points (boiling point of liquid nitrogen, melting point of ice, boiling point of water, room temperature), it is used here as the \emph{reference thermometer} against which the other two sensors are calibrated.
+
+\subsection{Pt-100 Resistance Thermometer}
+The electrical resistivity of a pure metal arises from the scattering of conduction electrons by lattice vibrations (phonons) and by impurities/defects. As temperature increases, the amplitude of lattice vibrations increases, the phonon scattering rate increases, and hence the resistivity -- and therefore the resistance of a wire of fixed geometry -- increases. Over a limited range of temperature this variation is very nearly linear and can be written as
+\begin{equation}
+    R(T) = R_0\left(1 + \alpha T\right),
+    \label{eq:pt100}
+\end{equation}
+where $R_0$ is the resistance at $T = 0\,^{\circ}\mathrm{C}$, $\alpha$ is the temperature coefficient of resistance of the metal, and $T$ is the temperature in $^{\circ}\mathrm{C}$. For a standard Pt-100 sensor $R_0 = 100\,\Omega$ and $\alpha \approx 3.85\times10^{-3}\,^{\circ}\mathrm{C}^{-1}$. Equation~\eqref{eq:pt100} can equivalently be written as a straight line
+\begin{equation}
+    R(T) = a + bT, \qquad a = R_0, \quad b = R_0\alpha,
+    \label{eq:pt100linear}
+\end{equation}
+so that a linear regression of measured $R$ against the known standard temperatures $T$ directly yields $R_0$ and $\alpha$ for the particular sensor used. Once $a$ and $b$ are known, Eq.~\eqref{eq:pt100linear} can be inverted to obtain the unknown temperature from a measured resistance:
+\begin{equation}
+    T(R) = \frac{R - a}{b}.
+    \label{eq:pt100inv}
+\end{equation}
+Platinum is chosen because it is chemically inert (does not oxidise easily), has a highly linear and reproducible $R$--$T$ characteristic over a wide range, and can be obtained in a very pure form, which is essential for reproducibility from one sensor to another.
+
+\subsection{Semiconductor Diode as a Temperature Sensor}
+In a p--n junction diode under forward bias, the current--voltage relation is given by the ideal diode equation
+\begin{equation}
+    I = I_0\left(e^{qV/\eta k T} - 1\right),
+    \label{eq:diode1}
+\end{equation}
+where $T$ is the absolute temperature of the junction, $q$ is the electronic charge, $k$ is Boltzmann's constant, and $\eta$ (the ideality factor) lies between 1 and 2. The saturation current $I_0$ itself depends strongly on temperature and on the band gap energy $E_g$ of the semiconductor:
+\begin{equation}
+    I_0 = p\,T^{m}\, e^{-E_g/\eta k T},
+    \label{eq:I0}
+\end{equation}
+where $p$ is a constant depending on the junction geometry and doping, and $m$ is a material-dependent constant.
+
+For a forward-biased junction with $V \gg \eta k T/q$, the $-1$ in Eq.~\eqref{eq:diode1} may be dropped:
+\begin{equation}
+    I \simeq I_0\, e^{qV/\eta k T}.
+    \label{eq:diode2}
+\end{equation}
+Substituting Eq.~\eqref{eq:I0} into Eq.~\eqref{eq:diode2},
+\begin{equation}
+    I = p\,T^{m}\, e^{-E_g/\eta k T}\, e^{qV/\eta k T}
+      = p\,T^{m}\, \exp\!\left[\frac{qV - E_g}{\eta k T}\right].
+    \label{eq:diode3}
+\end{equation}
+
+\subsubsection*{Derivation of $V(T)$}
+Taking the natural logarithm of Eq.~\eqref{eq:diode3},
+\begin{equation}
+    \ln I = \ln p + m\ln T + \frac{qV - E_g}{\eta k T}.
+\end{equation}
+Rearranging for $qV$,
+\begin{equation}
+    qV = E_g + \eta k T\left[\ln I - \ln p - m\ln T\right]
+       = E_g - \eta k T\left[m\ln T + \ln p - \ln I\right].
+\end{equation}
+Defining
+\begin{equation}
+    C \equiv m\ln T + \ln p - \ln I,
+    \label{eq:Cdef}
+\end{equation}
+we obtain
+\begin{equation}
+    qV = E_g - C\eta k T
+    \qquad\Longrightarrow\qquad
+    \boxed{V = \frac{E_g}{q} - \frac{C\eta k}{q}\,T}.
+    \label{eq:diodeVT}
+\end{equation}
+If the diode is operated at constant forward current $I$ (as is done in this experiment), and since the variation of $\ln T$ with $T$ in Eq.~\eqref{eq:Cdef} is very slow (logarithmic) compared to the much stronger linear variation of $V$ with $T$ contained in the second term of Eq.~\eqref{eq:diodeVT}, $C$ may be treated as effectively constant. Equation~\eqref{eq:diodeVT} then predicts that \emph{the forward voltage of a diode operated at constant current varies linearly with the absolute temperature $T$}, with a negative slope; this is the basis for using a diode as a temperature sensor. Writing
+\begin{equation}
+    V(T) = A - B\,T, \qquad A = \frac{E_g}{q}, \quad B = \frac{C\eta k}{q},
+    \label{eq:diodefit}
+\end{equation}
+a linear fit of the measured $V$--$T$ data gives the slope $B$ and the intercept $A$. Since $C\approx \mathcal{O}(1)$ and $\eta \approx 1$--$2$, the intercept $A$ obtained by extrapolating the straight line to $T=0\,\mathrm{K}$ gives an order-of-magnitude estimate of the band-gap energy of the semiconductor, $E_g \approx qA$ (in eV, $E_g$ is numerically equal to $A$ expressed in volts).
+
+\subsection{Thermocouple}
+When two dissimilar metals (here Chromel and Alumel) are joined to form a junction, and this junction is held at a temperature $T$ different from a reference junction (here, formed internally at the measuring instrument, effectively at room temperature $T_{\mathrm{ref}}$), a small electromotive force (thermo-emf) is developed between the free ends. This is known as the \emph{Seebeck effect}, and arises because the density of free electrons and their diffusion characteristics differ between the two metals; when a temperature gradient exists across each conductor, electrons diffuse from the hot end to the cold end at different rates in the two metals, setting up a net contact potential difference at the junction that is not exactly cancelled between the two metals used.
+
+For a single junction thermocouple and over a limited temperature range around the reference point, the relationship between the thermo-emf $\varepsilon$ and the junction temperature $T$ is very nearly linear (to lowest order in a Taylor expansion of the true, weakly non-linear characteristic):
+\begin{equation}
+    \varepsilon(T) = \varepsilon_0 + S\,T,
+    \label{eq:thermocouple}
+\end{equation}
+where $S = d\varepsilon/dT$ is called the \emph{Seebeck coefficient} (or thermoelectric sensitivity) of the thermocouple pair, and $\varepsilon_0$ is the (small, ideally zero) emf recorded when the sensing junction is at the reference-junction temperature. A linear regression of measured emf against the (independently known, here Pt-100-derived) temperature gives $S$ and $\varepsilon_0$, which together constitute the calibration of the thermocouple.
+
+\section{Apparatus}
+Pt-100 platinum resistance sensor; digital multimeter (four-probe resistance measurement); semiconductor diode 1N4148 operated at constant forward current, with a digital voltmeter; Chromel--Alumel thermocouple with a millivoltmeter; liquid nitrogen (LN$_2$) in a thermocol (Dewar) container; ice; a beaker of water with a heater for the boiling-point measurement; thermometer / room-temperature reference.
+
+\section{Procedure}
+\begin{enumerate}
+    \item The resistance of the Pt-100 sensor was measured at four standard/reference temperatures: room temperature ($24.8\,^{\circ}\mathrm{C}$, measured with a laboratory thermometer), melting point of ice ($0.5\,^{\circ}\mathrm{C}$), boiling point of water at the local atmospheric pressure ($96.1\,^{\circ}\mathrm{C}$), and the boiling point of liquid nitrogen ($-196\,^{\circ}\mathrm{C}$). A linear fit of $R$ vs.\ $T$ then gave the calibration equation for the Pt-100 [Eq.~\eqref{eq:pt100linear}].
+    \item The Pt-100, the diode, and the thermocouple junction were then bundled together and immersed in the liquid-nitrogen vapour above the LN$_2$ surface (which has a temperature gradient from $\approx -196\,^{\circ}\mathrm{C}$ near the surface to room temperature higher up), so that all three sensors are always at (nearly) the same temperature at any instant.
+    \item The assembly was allowed to warm up slowly from liquid-nitrogen temperature to room temperature. At each instant, the resistance $R$ of the Pt-100, the thermo-emf $\varepsilon$ of the thermocouple, and the forward voltage $V$ of the diode (at fixed forward current) were recorded simultaneously.
+    \item The Pt-100 resistance $R$ recorded at each instant was converted into the corresponding temperature $T$ using the inverted calibration equation~\eqref{eq:pt100inv} (and $T[\mathrm{K}] = T[^\circ\mathrm{C}] + 273.15$ where an absolute temperature was needed, i.e.\ for the diode).
+    \item The thermo-emf $\varepsilon$ and the diode voltage $V$ were then each plotted against the derived temperature $T$, and linear regression was used to obtain the respective calibration equations [Eqs.~\eqref{eq:diodefit} and \eqref{eq:thermocouple}].
+\end{enumerate}
+
+\section{Observations / Data}
+
+\subsection{Pt-100 calibration data}
+\begin{table}[H]
+\centering
+\caption{Pt-100 resistance at four standard reference temperatures.}
+\begin{tabular}{lcc}
+\toprule
+Reference point & $T$ ($^{\circ}$C) & $R$ ($\Omega$) \\
+\midrule
+Room temperature   & 24.8   & 110.1 \\
+Boiling point of water & 96.1  & 136.2 \\
+Melting point of ice   & 0.5   & 100.8 \\
+Boiling point of LN$_2$ & $-196$ & 20.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Pt-100 resistance, thermocouple emf and diode voltage (simultaneous readings during warm-up)}
+\begin{table}[H]
+\centering
+\caption{Simultaneously recorded Pt-100 resistance $R$, thermocouple emf $\varepsilon$, and diode forward voltage $V$, along with the temperature $T$ derived from $R$ using Eq.~\eqref{eq:pt100inv}.}
+\begin{tabular}{cccccc}
+\toprule
+$R$ ($\Omega$) & $T$ ($^\circ$C) & $T$ (K) & $\varepsilon$ (mV) & $V$ (V) \\
+\midrule
+20.0 & $-197.65$ & 75.50 & 6.4 & 1.020 \\
+29.2 & $-174.70$ & 98.45 & 6.3 & 1.010 \\
+30.2 & $-172.21$ & 100.94 & 6.3 & 1.010 \\
+35.0 & $-160.24$ & 112.91 & 6.1 & 1.000 \\
+40.0 & $-147.77$ & 125.38 & 5.9 & 0.990 \\
+45.9 & $-133.06$ & 140.09 & 5.7 & 0.970 \\
+50.1 & $-122.58$ & 150.57 & 5.4 & 0.950 \\
+55.0 & $-110.36$ & 162.79 & 5.1 & 0.930 \\
+60.0 & $-97.89$ & 175.26 & 4.7 & 0.910 \\
+65.0 & $-85.42$ & 187.73 & 4.3 & 0.890 \\
+70.0 & $-72.95$ & 200.20 & 3.9 & 0.870 \\
+75.0 & $-60.48$ & 212.67 & 3.5 & 0.850 \\
+80.0 & $-48.02$ & 225.13 & 3.1 & 0.830 \\
+85.2 & $-35.05$ & 238.10 & 2.6 & 0.820 \\
+90.0 & $-23.08$ & 250.07 & 2.2 & 0.800 \\
+96.4 & $-7.12$ & 266.03 & 1.5 & 0.770 \\
+100.0 & 1.86 & 275.01 & 1.1 & 0.760 \\
+105.0 & 14.33 & 287.48 & 0.6 & 0.740 \\
+109.6 & 23.31 & 296.46 & 0.1 & 0.720 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Calculations and Analysis}
+
+\subsection{Pt-100 calibration}
+A least-squares straight-line fit $R = a + bT$ was carried out on the four points of Table~1 using
+\begin{equation}
+    b = \frac{\sum (T_i-\bar T)(R_i - \bar R)}{\sum (T_i - \bar T)^2}, \qquad a = \bar R - b\bar T ,
+\end{equation}
+which gave
+\begin{equation}
+    \boxed{R(T) = (99.25 \pm 0.85) + (0.4010 \pm 0.0077)\,T \ \ [\Omega,\ ^\circ\mathrm{C}]}
+\end{equation}
+with correlation coefficient $r = 0.9996$ ($r^2 = 0.9993$). Comparing with Eq.~\eqref{eq:pt100linear}, this gives $R_0 = a = 99.25\pm0.85\,\Omega$ and
+\begin{equation}
+    \alpha = \frac{b}{a} = (4.04 \pm 0.08)\times 10^{-3}\ ^\circ\mathrm{C}^{-1},
+\end{equation}
+which is close to the standard reference value $\alpha_{\text{Pt}} \approx 3.85\times10^{-3}\ ^\circ\mathrm{C}^{-1}$, and $R_0 \approx 100\,\Omega$ as expected for a Pt-100 sensor, confirming that the sensor behaves as expected. This calibration line, together with the four data points, is shown in Fig.~\ref{fig:pt100}. The inverse relation used to convert resistance into temperature for the rest of the experiment is
+\begin{equation}
+    T(R) = \frac{R - 99.25}{0.4010}\ \ [^\circ\mathrm{C}].
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{graphs/pt100_calibration.pdf}
+\caption{Calibration of the Pt-100 resistance thermometer: resistance vs.\ temperature at the four standard reference points, with the best-fit straight line.}
+\label{fig:pt100}
+\end{figure}
+
+\subsection{Semiconductor diode calibration}
+Using the temperatures $T$(K) obtained from the Pt-100 (Table~2), the diode forward voltage $V$ was fitted to the linear form of Eq.~\eqref{eq:diodefit}, $V = A - BT$:
+\begin{equation}
+    \boxed{V(T) = (1.1559 \pm 0.0070)\ \mathrm{V} - (1.433 \pm 0.035)\times10^{-3}\ \mathrm{V/K}\ \times T}
+\end{equation}
+with $r = -0.9949$ ($r^2 = 0.9899$), i.e.\ the diode voltage decreases essentially linearly with increasing temperature, as predicted by Eq.~\eqref{eq:diodeVT} (Fig.~\ref{fig:diode}). The sensitivity of the diode as a temperature sensor is
+\begin{equation}
+    \left|\frac{dV}{dT}\right| = 1.433\ \mathrm{mV/K}.
+\end{equation}
+Extrapolating the fitted line to $T = 0\,\mathrm{K}$ gives the intercept $A = E_g/q$, so that the band-gap energy of the diode material (silicon, for the 1N4148) is estimated as
+\begin{equation}
+    \boxed{E_g \approx qA = 1.16 \pm 0.01\ \mathrm{eV}},
+\end{equation}
+which compares well with the accepted band gap of silicon at low temperature, $E_g(\mathrm{Si}) \approx 1.12\ \mathrm{eV}$ (the small excess is expected, since Eq.~\eqref{eq:diodeVT} neglects the weak $\ln T$ dependence of $C$, and $E_g$ itself decreases slightly with increasing $T$ in real silicon, which is not captured by a straight-line extrapolation from the $75$--$300$ K range used here).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{graphs/diode_calibration.pdf}
+\caption{Forward voltage of the 1N4148 diode (at constant forward current) as a function of absolute temperature, with best-fit straight line. The intercept gives an estimate of the band gap energy.}
+\label{fig:diode}
+\end{figure}
+
+\subsection{Thermocouple calibration}
+The thermo-emf $\varepsilon$ was fitted to the linear form of Eq.~\eqref{eq:thermocouple}, $\varepsilon = \varepsilon_0 + ST$, using the Pt-100-derived Celsius temperatures:
+\begin{equation}
+    \boxed{\varepsilon(T) = (1.419 \pm 0.142)\ \mathrm{mV} - (0.0297 \pm 0.0013)\ \mathrm{mV}/^\circ\mathrm{C} \times T}
+\end{equation}
+with $r = -0.984$ ($r^2 = 0.968$). The magnitude of the Seebeck coefficient obtained is
+\begin{equation}
+    |S| = \left|\frac{d\varepsilon}{dT}\right| \approx 29.7\pm1.3\ \mu\mathrm{V}/^{\circ}\mathrm{C},
+\end{equation}
+which is of the same order as the nominal Seebeck coefficient quoted for Chromel--Alumel (Type K) thermocouples ($\approx 40\ \mu\mathrm{V}/^\circ\mathrm{C}$ near room temperature); the somewhat lower value obtained here, and the slightly poorer linearity ($r^2=0.968$, visibly non-zero curvature at the two ends of the range in Fig.~\ref{fig:thermocouple}), reflects the fact that the true Seebeck coefficient of a thermocouple is itself a (weak) function of temperature, so that a single straight line is only an approximation over the very wide range ($\approx-198\,^\circ$C to $+23\,^\circ$C) spanned in this experiment. The emf extrapolates to zero close to room temperature, consistent with the reference (cold) junction of the digital millivoltmeter being at room temperature.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.72\textwidth]{graphs/thermocouple_calibration.pdf}
+\caption{Thermo-emf of the Chromel--Alumel thermocouple as a function of temperature, with best-fit straight line.}
+\label{fig:thermocouple}
+\end{figure}
+
+\section{Error Analysis}
+
+\subsection{Method}
+For each calibration $y = a + bx$, the least-squares estimates of slope and intercept and their standard errors were computed from
+\begin{equation}
+    b = \frac{S_{xy}}{S_{xx}}, \quad a = \bar y - b\bar x, \quad
+    s = \sqrt{\frac{\sum(y_i - a - bx_i)^2}{n-2}},
+\end{equation}
+\begin{equation}
+    \delta b = \frac{s}{\sqrt{S_{xx}}}, \qquad
+    \delta a = s\sqrt{\frac{\sum x_i^2}{n\, S_{xx}}},
+\end{equation}
+where $S_{xx} = \sum (x_i - \bar x)^2$, $S_{xy}=\sum(x_i-\bar x)(y_i - \bar y)$, and $n$ is the number of data points. The goodness of the linear fit is quantified by the Pearson correlation coefficient $r = S_{xy}/\sqrt{S_{xx}S_{yy}}$.
+
+\subsection{Summary of uncertainties}
+\begin{table}[H]
+\centering
+\caption{Summary of least-squares fit parameters and their standard errors for the three sensors.}
+\begin{tabular}{lcccc}
+\toprule
+Sensor & Fit & Slope & Intercept & $r^2$ \\
+\midrule
+Pt-100 & $R=a+bT$ ($\Omega$, $^\circ$C) & $0.4010\pm0.0077$ & $99.25\pm0.85$ & 0.9993 \\
+Diode  & $V=A+BT$ (V, K)  & $(-1.433\pm0.035)\times10^{-3}$ & $1.1559\pm0.0070$ & 0.9899 \\
+Thermocouple & $\varepsilon=\varepsilon_0+ST$ (mV, $^\circ$C) & $-0.0297\pm0.0013$ & $1.419\pm0.142$ & 0.9682 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Sources of error}
+\begin{itemize}
+    \item \textbf{Pt-100 calibration itself rests on only four points}, one of which (the LN$_2$ boiling point) is obtained from a vapour region above the liquid whose temperature can drift with the LN$_2$ level and with how deep the sensor is immersed; this is the largest single source of uncertainty in $a$ and $b$ (note the largest residual, $-1.6\,\Omega$, occurs at $T=96.1\,^\circ$C, Fig.~\ref{fig:residuals}).
+    \item \textbf{Non-simultaneity / thermal lag}: the Pt-100, diode, and thermocouple, although bundled together, do not have identical thermal mass and contact area, so during the warm-up run there can be a small lag between the temperature actually seen by each sensor at a given instant; this contributes scatter to the diode and thermocouple fits over and above pure instrumental error.
+    \item \textbf{Instrumental resolution}: the multimeter/millivoltmeter readings are limited by the last significant digit of the display (e.g.\ $\pm0.1\,\mathrm{mV}$ for the thermocouple, $\pm0.001$--$0.01\,\mathrm{V}$ for the diode, $\pm0.1\,\Omega$ for the Pt-100), which sets a floor on the achievable precision.
+    \item \textbf{Non-linearity over a wide temperature range}: both the true $R$--$T$ characteristic of platinum and the Seebeck coefficient of the thermocouple are only \emph{approximately} linear; deviations from linearity are most visible at the extremes of the range (very low or near room temperature), and show up as the systematic curvature seen in Fig.~\ref{fig:thermocouple} and as the comparatively lower $r^2$ for the thermocouple fit.
+    \item \textbf{Contact/lead resistance} in the two/four-wire measurement of the Pt-100 resistance, and thermal emf's generated at the connecting leads of the thermocouple (parasitic junctions), are systematic errors not accounted for in the statistical error analysis above.
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.65\textwidth]{graphs/pt100_residuals.pdf}
+\caption{Residuals ($R_{\text{observed}} - R_{\text{fit}}$) of the Pt-100 calibration fit at the four reference temperatures.}
+\label{fig:residuals}
+\end{figure}
+
+\section{Results and Conclusion}
+\begin{enumerate}[label=(\arabic*)]
+    \item The Pt-100 sensor was successfully calibrated: $R(T) = (99.25\pm0.85) + (0.4010\pm0.0077)\,T\ [\Omega,\,^\circ\text{C}]$, giving $R_0 \approx 99.3\,\Omega$ and $\alpha \approx 4.04\times10^{-3}\ ^\circ\mathrm{C}^{-1}$, consistent with the standard Pt-100 characteristic ($R_0=100\,\Omega$, $\alpha \approx 3.85\times10^{-3}\ ^\circ\mathrm{C}^{-1}$).
+    \item Using this as a reference thermometer, the 1N4148 diode was calibrated over the range $\sim$75--296~K: $V(T) = (1.1559\pm0.0070) - (1.433\pm0.035)\times10^{-3}\,T$ [V, K], a highly linear relation ($r^2=0.99$), from which the semiconductor band gap was estimated as $E_g \approx 1.16\,\mathrm{eV}$, in good agreement with the known band gap of silicon ($\approx1.12$~eV).
+    \item The Chromel--Alumel thermocouple was calibrated over the range $\sim{-198}$ to $+23\,^\circ$C: $\varepsilon(T) = (1.419\pm0.142) - (0.0297\pm0.0013)\,T$ [mV, $^\circ$C], with somewhat greater deviation from linearity ($r^2=0.97$) than the other two sensors, reflecting the intrinsically weaker temperature-dependence of the Seebeck coefficient of Chromel--Alumel over such a wide span.
+    \item The Pt-100 has the largest fractional/absolute change of its measured quantity per degree, followed by the thermocouple, with the diode being intermediate; all three sensors, however, gave temperature calibrations consistent with expected physics, validating the experimental method.
+\end{enumerate}
+\centering
+{\large \textbf{-End of the report-}}\\[0.3cm]
+
+
+
+
+\end{document}
