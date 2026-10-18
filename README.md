@@ -11,3 +11,5 @@ Pt-100	R = (99.25 ± 0.85) + (0.4010 ± 0.0077)·T [Ω, °C]
 Diode	V = (1.1559 ± 0.0070) − (1.433 ± 0.035)×10⁻³·T [V, K] → E_g ≈ 1.16 eV
 Thermocouple	ε = (1.419 ± 0.142) − (0.0297 ± 0.0013)·T [mV, °C]
 
+
+The physical models, mathematical derivations, and experimental data were formulated by me as part of the laboratory coursework. The accompanying Python analysis and plotting scripts were generated using Claude (Anthropic) and independently validated.
